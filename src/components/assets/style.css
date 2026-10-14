@@ -1,0 +1,455 @@
+/**
+ * ====================================================================
+ * Design System, Typography Tokens & Aesthetic Styling
+ * Inspired by douglus.site, visuvate.com, pamidordesign.co,
+ * gallery-play.be, and nexstudio.tech
+ * ====================================================================
+ */
+
+:root {
+  /* Color Palette Tokens */
+  --bg-primary: #0a0a0b;
+  --bg-secondary: #121215;
+  --bg-surface: #18181c;
+  --bg-surface-elevated: #202026;
+  --bg-subtle: rgba(255, 255, 255, 0.03);
+
+  /* Text & Contrast Tokens */
+  --text-primary: #f5f5f0;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --text-inverse: #0a0a0b;
+
+  /* Accent & Highlight Tokens (Warm Amber / Sunset Orange from douglus.site & pamidor) */
+  --accent: #ff5722;
+  --accent-hover: #ff7043;
+  --accent-subtle: rgba(255, 87, 34, 0.12);
+  --accent-border: rgba(255, 87, 34, 0.35);
+
+  /* Border & Rule Tokens */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.16);
+  --border-prominent: rgba(255, 255, 255, 0.28);
+  --rule-color: rgba(255, 255, 255, 0.1);
+
+  /* Spatial & Container Tokens */
+  --container-max: 1320px;
+  --container-padding: clamp(1rem, 3.5vw, 3.5rem);
+
+  /* Easing Presets */
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-snappy: cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* Fluid Typography Tokens via clamp() */
+  --font-display-hero: clamp(2.75rem, 7vw, 6.5rem);
+  --font-display-section: clamp(2rem, 4.5vw, 4rem);
+  --font-display-project: clamp(1.75rem, 3.2vw, 3rem);
+  --font-body-lead: clamp(1.125rem, 1.8vw, 1.35rem);
+  --font-body: clamp(0.95rem, 1.2vw, 1.05rem);
+  --font-caption: clamp(0.8rem, 0.9vw, 0.875rem);
+  --font-mono-tag: clamp(0.75rem, 0.85vw, 0.8125rem);
+}
+
+/* Base Body Configuration - using overflow-x: clip so position: sticky functions properly */
+html,
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body-sans, "Plus Jakarta Sans", sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  selection-background-color: var(--accent);
+  selection-color: #ffffff;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* Custom Cursor Desktop Active Configuration */
+@media (pointer: fine) {
+  body.custom-cursor-active,
+  body.custom-cursor-active a,
+  body.custom-cursor-active button,
+  body.custom-cursor-active [role="button"],
+  body.custom-cursor-active .cursor-pointer {
+    cursor: none !important;
+  }
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* ====================================================================
+ * Typography Utility Classes
+ * Ultra-readable contemporary geometric grotesk for headlines & hero
+ * ==================================================================== */
+.font-display {
+  font-family: var(--font-dm-sans, var(--font-body-sans, "Plus Jakarta Sans", sans-serif));
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+.font-hero {
+  font-family: var(--font-dm-sans, var(--font-body-sans, "Plus Jakarta Sans", sans-serif));
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+.font-mono-code {
+  font-family: var(--font-mono-jetbrains, "JetBrains Mono", monospace);
+}
+
+.text-fluid-hero {
+  font-family: var(--font-dm-sans, var(--font-body-sans, "Plus Jakarta Sans", sans-serif));
+  font-size: var(--font-display-hero);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+.text-fluid-section {
+  font-size: var(--font-display-section);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+.text-fluid-project {
+  font-size: var(--font-display-project);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.text-fluid-lead {
+  font-size: var(--font-body-lead);
+  line-height: 1.6;
+}
+
+/* ====================================================================
+ * Layout Container
+ * ==================================================================== */
+.site-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* ====================================================================
+ * Editorial Dividers (douglus.site / pamidordesign.co inspired)
+ * ==================================================================== */
+.editorial-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin: 2.5rem 0;
+  opacity: 0.6;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-subtle);
+}
+
+.divider-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+
+/* ====================================================================
+ * Navigation Link Hover Underline (douglus.site menu--line style)
+ * ==================================================================== */
+.nav-link-editorial {
+  position: relative;
+  display: inline-block;
+  color: var(--text-secondary);
+  transition: color 0.3s var(--ease-smooth);
+}
+
+.nav-link-editorial::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 1.5px;
+  background-color: var(--accent);
+  transition: width 0.35s var(--ease-smooth);
+}
+
+.nav-link-editorial:hover {
+  color: #ffffff;
+}
+
+.nav-link-editorial:hover::after {
+  width: 100%;
+}
+
+.nav-link-editorial.is-active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.nav-link-editorial.is-active::after {
+  width: 100%;
+}
+
+/* ====================================================================
+ * Device Mockups: Browser Window & Mobile Phone Shells (nexstudio.tech)
+ * ==================================================================== */
+.browser-mockup {
+  background: #141418;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+  transition: border-color 0.4s var(--ease-smooth), transform 0.4s var(--ease-smooth);
+}
+
+.browser-mockup:hover {
+  border-color: var(--border-medium);
+}
+
+.browser-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: #0d0d10;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.browser-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.browser-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.18);
+  display: inline-block;
+}
+
+.browser-dots span:nth-child(1) { background-color: #ff5f56; }
+.browser-dots span:nth-child(2) { background-color: #ffbd2e; }
+.browser-dots span:nth-child(3) { background-color: #27c93f; }
+
+.browser-domain-pill {
+  font-family: var(--font-mono-jetbrains, monospace);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 3px 12px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+
+/* Mobile Phone Mockup */
+.mobile-mockup {
+  position: relative;
+  border-radius: 36px;
+  border: 3px solid rgba(255, 255, 255, 0.14);
+  background: #0e0e11;
+  padding: 10px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+}
+
+.mobile-notch {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 18px;
+  background: #000000;
+  border-radius: 12px;
+  z-index: 20;
+}
+
+/* ====================================================================
+ * Tactile Button Styles
+ * ==================================================================== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 9999px;
+  background-color: var(--text-primary);
+  color: var(--text-inverse);
+  font-size: 0.925rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: transform 0.25s var(--ease-snappy), background-color 0.25s var(--ease-snappy), box-shadow 0.25s var(--ease-snappy);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 9999px;
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+  font-size: 0.925rem;
+  font-weight: 500;
+  transition: all 0.25s var(--ease-snappy);
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  border-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 9999px;
+  background-color: var(--accent);
+  color: #ffffff;
+  font-size: 0.925rem;
+  font-weight: 600;
+  transition: all 0.25s var(--ease-snappy);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-accent:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(255, 87, 34, 0.4);
+}
+
+/* ====================================================================
+ * Universal Glowing Gradient Card System
+ * Applied on hover to any card across the site with radiant neon glow
+ * ==================================================================== */
+.card-glow-interactive {
+  position: relative;
+  background-color: #0e0e12;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.4s var(--ease-smooth),
+              box-shadow 0.4s var(--ease-smooth),
+              border-color 0.4s var(--ease-smooth);
+  will-change: transform, box-shadow;
+}
+
+/* Sharp Glowing Gradient Rim */
+.card-glow-interactive::before {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 87, 34, 1) 0%,
+    rgba(255, 140, 0, 0.8) 35%,
+    rgba(255, 87, 34, 0.4) 65%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-smooth);
+  z-index: 2;
+}
+
+/* Atmospheric Ambient Radiant Glow */
+.card-glow-interactive::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(255, 87, 34, 0.45) 0%,
+    rgba(255, 140, 0, 0.25) 45%,
+    transparent 75%
+  );
+  filter: blur(16px);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-smooth);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Active Hover State: Spring Elevation + Vivid Gradient Glow */
+.card-glow-interactive:hover {
+  transform: translateY(-5px);
+  border-color: transparent !important;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.85),
+              0 0 30px -4px rgba(255, 87, 34, 0.45),
+              inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.card-glow-interactive:hover::before {
+  opacity: 1;
+}
+
+.card-glow-interactive:hover::after {
+  opacity: 1;
+}
+
+/* ====================================================================
+ * Accessibility: Prefers Reduced Motion
+ * ==================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
