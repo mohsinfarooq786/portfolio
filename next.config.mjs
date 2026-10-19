@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
   experimental: {
     agentFeedback: true,
   },
@@ -13,7 +12,6 @@ const nextConfig = {
     "192.168.0.170",
   ],
   turbopack: {
-    root: "/Users/mohsin/Desktop/portfolio",
     rules: {
       "*.css": {
         loaders: ["@tailwindcss/turbopack"],
